@@ -313,7 +313,7 @@ map.on('zoomend', function() {
 legend.addTo(map);
 */
 
-let lat, lon;
+/*let lat, lon;
 const button = document.getElementById('w3-bar-item w3-button w3-padding');
 button.addEventListener('click', async event => {
   const state = document.getElementById('state').value;
@@ -342,6 +342,7 @@ if ('geolocation' in navigator) {
 } else {
   console.log('geolocation not available');
 }
+*/
 
 /*async function getCsv () {
     const response = await fetch('data/chemistry.csv');
