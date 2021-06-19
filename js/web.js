@@ -126,11 +126,7 @@ function onLocationFound(e) {
     L.marker(e.latlng).addTo(map)
         .bindPopup("You are within " + radius + " meters from this point").openPopup();
 
-    L.circle([e.latlng, radius],{
-        color: 'red',
-        fillColor: '#f03',
-        fillOpacity: 0.5
-    }).addTo(map);
+    L.circle(e.latlng, radius).addTo(map);
 }
 
 function onLocationError(e) {
