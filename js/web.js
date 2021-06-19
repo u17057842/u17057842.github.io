@@ -122,13 +122,8 @@ function highlightFeature(e) {
 }
 function onLocationFound(e) {
     var radius = e.accuracy / 2;
-    let newIcon = L.icon({
-        iconUrl: 'marker-icon.png'
-    });
-
-    L.marker(e.latlng, {icon: newIcon}).addTo(map)
+    L.marker(e.latlng).addTo(map)
         .bindPopup("You are within " + radius + " meters from this point").openPopup();
-
     L.circle(e.latlng, radius).addTo(map);
 }
 
@@ -281,9 +276,7 @@ var baseLayers = {
 
 };
 
-L.control.layers(baseLayers).icon({
-    iconUrl: 'layers.png'
-}).addTo(map);
+L.control.layers(baseLayers).addTo(map);
 
 
 const headings = ['RHP Site Code','Sampling Date','LatitudeGIS','LongitudeGIS','Reference Site','Site Visit Owner','River Name','Tributary Of','Drainage Region','Longitudinal Zone','Altitude','Political Region','Water Management Area','Ecoregion 1','Ecoregion 2','Secondary Catchment','Quartenary Catchment','Vegetation Type','Geology Type','Bioregion','Water Chemistry management region','Rainfall Region','Fastest Flow','Samples Collected','Water Filtered','Volume Filtered','Date of Analysis','Sample Frozen','Preservatives','Institute','Turbidity','AL','AL-DISS','AL-H','AS','AS-DISS','AS-H','B','B-DISS','B-H','BA','BA-DISS','BA-H','BE','BE-DISS','BE-H','CA','CaCO3','CD','CD-DISS','CD-H','CL','CO','CO-DISS','CO-H','COD','COND','CR','CR-DISS','CR-H','CU','CU-DISS','CU-H','DO','DOC','DOPER','ECOLI','F','FE','FE-DISS','FE-H','HG','HG-H','K','KN','MG','MN','MN-DISS','MN-H','MO','MO-DISS','MO-H','NA','NH4-N','NI','NI-DISS','NI-H','NO2-N','NO3+NO2-N','NO3-N','ORGS','PB','PB-DISS','PB-H','PH','PHEN','PO4-P','REDOX','SALINITY','SD','SI','SO4','SR','SR-DISS','SR-H','SRP','TAL','TDS','TEMP','TI','TI-DISS','TI-H','TP','TSS','TURB','V','V-DISS','V-H','ZN','ZN-DISS','ZN-H','ZR','ZR-DISS','ZR-H'];
