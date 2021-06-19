@@ -31,19 +31,21 @@
 
 ## Introduction
 
+The main project can be found by following the <a href="https://u17057842.github.io">link</a>.
+
 Detail how to use
 
 - Instruction 1
 - Instruction 2
 - Instruction 3
 
-## How it works
-
-Technical jargon
-
-## conservation
+## Conservation of rivers
 
 Conservation facts
+
+## How the Website Works
+
+Technical jargon
 
 ## Bugs and feature requests
 
@@ -51,8 +53,8 @@ If you have a problem(bug) or want to request a new feature, please first check 
 
 ## How to help
 
-Services to offer
-Community involvement
+- Services to offer
+- Community involvement
 
 ## Creators
 

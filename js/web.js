@@ -78,6 +78,7 @@ var map = L.map('map', {
     .fitWorld()
     .flyTo([-28,23], 5);
 
+let marker = L.marker([lat, lon]).addTo(map);
 
 function getColor(d) {
 return d > 100.00 ? '#08306b' :
