@@ -5,7 +5,7 @@ mbUrl = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk
 
 let myS = document.getElementById("mySidebar");
 
-// Get the DIV with overlay effect
+
 let overlayBg = document.getElementById("myOverlay");
 
 function w3_open() {
@@ -19,7 +19,7 @@ function w3_open() {
     };
   }
   
-  // Close the sidebar with the close button
+ 
   function w3_close() {
     myS.style.display = "none";
     //overlayBg.style.display = "none";
@@ -123,8 +123,7 @@ function highlightFeature(e) {
 function onLocationFound(e) {
     var radius = e.accuracy / 2;
     let newIcon = L.icon({
-        iconUrl: 'marker-icon.png',
-        iconSize: [92,51]
+        iconUrl: 'marker-icon.png'
     });
 
     L.marker(e.latlng, {icon: newIcon}).addTo(map)
@@ -228,20 +227,6 @@ function zoomToFeature(e) {
     console.log((layer.feature.properties ? layer.feature.properties.TMPRIV_ : null));
     
 
-   /*$(document).ready(function (){
-        $("dd").load("data/data.json",function(response, status){
-            if (status == "success"){
-              $(response).each(function(){
- 
-                var text = JSON.parse(response);
-                $('dd').text(text.TMPRIV_).appendTo('dd');
-              });
-              
-            }
-        });
-    });  */
-    //obj.push([{"TMPRIV_" : "layer.feature.properties.TMPRIV_", "waterQuality": "0", "managed": "0"}]);
-
 }
 
 function onEachFeature(feature, layer) {
@@ -295,94 +280,30 @@ var baseLayers = {
     "Satellite map": satellite
 
 };
-
-L.control.layers(baseLayers).addTo(map);
-
-/*function legendMaker (map) {
-
-    var div = document.getElementById('legendA'),
-    grades = [0, 1, 2, 5, 10, 20, 50, 100],
-    labels = [],
-    from, to;
-
-    for (var i = 0; i < grades.length; i++) {
-    from = grades[i];
-    to = grades[i + 1];
-
-    labels.push(
-        '<i style="background:' + getColor(from + 1) + '"></i> ' +
-        from + (to ? '&ndash;' + to : ' + Km'));
-    }
-
-    div.innerHTML = labels.join('<br>');
-    return div;
-};
-
-legend.addTo(map);
-*/
-
-/*let lat, lon;
-const button = document.getElementById('w3-bar-item w3-button w3-padding');
-button.addEventListener('click', async event => {
-  const state = document.getElementById('state').value;
-  const data = { lat, lon, state };
-  const options = {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
-  };
-  const response = await fetch('/api', options);
-  const json = await response.json();
-  console.log(json);
-  
+let layerIcon = L.icon({
+    iconUrl: 'layers.png'
 });
+L.control.layers(baseLayers, {icon: layerIcon}).addTo(map);
 
-if ('geolocation' in navigator) {
-  console.log('geolocation available');
-  navigator.geolocation.getCurrentPosition(async position => {
-    lat = position.coords.latitude;
-    lon = position.coords.longitude;
-    document.getElementById('latitude').textContent = lat;
-    document.getElementById('longitude').textContent = lon;
-  });
-} else {
-  console.log('geolocation not available');
-}
-*/
 
-/*async function getCsv () {
-    const response = await fetch('data/chemistry.csv');
-    const csvData = await response.text();
-    let sliced = csvData.split('\n').slice(1,20);
-
-    console.log(sliced);
-}
-
-  getCsv();
-  */
 const headings = ['RHP Site Code','Sampling Date','LatitudeGIS','LongitudeGIS','Reference Site','Site Visit Owner','River Name','Tributary Of','Drainage Region','Longitudinal Zone','Altitude','Political Region','Water Management Area','Ecoregion 1','Ecoregion 2','Secondary Catchment','Quartenary Catchment','Vegetation Type','Geology Type','Bioregion','Water Chemistry management region','Rainfall Region','Fastest Flow','Samples Collected','Water Filtered','Volume Filtered','Date of Analysis','Sample Frozen','Preservatives','Institute','Turbidity','AL','AL-DISS','AL-H','AS','AS-DISS','AS-H','B','B-DISS','B-H','BA','BA-DISS','BA-H','BE','BE-DISS','BE-H','CA','CaCO3','CD','CD-DISS','CD-H','CL','CO','CO-DISS','CO-H','COD','COND','CR','CR-DISS','CR-H','CU','CU-DISS','CU-H','DO','DOC','DOPER','ECOLI','F','FE','FE-DISS','FE-H','HG','HG-H','K','KN','MG','MN','MN-DISS','MN-H','MO','MO-DISS','MO-H','NA','NH4-N','NI','NI-DISS','NI-H','NO2-N','NO3+NO2-N','NO3-N','ORGS','PB','PB-DISS','PB-H','PH','PHEN','PO4-P','REDOX','SALINITY','SD','SI','SO4','SR','SR-DISS','SR-H','SRP','TAL','TDS','TEMP','TI','TI-DISS','TI-H','TP','TSS','TURB','V','V-DISS','V-H','ZN','ZN-DISS','ZN-H','ZR','ZR-DISS','ZR-H'];
 
 var modal = document.getElementById("myModal");
 
-// Get the button that opens the modal
+
 var btn = document.getElementById("myBtn");
 
-// Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
-// When the user clicks on the button, open the modal
+
 btn.onclick = function() {
   modal.style.display = "block";
 }
 
-// When the user clicks on <span> (x), close the modal
 span.onclick = function() {
   modal.style.display = "none";
 }
 
-// When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
