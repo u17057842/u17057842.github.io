@@ -140,7 +140,6 @@ function onLocationError(e) {
 map.on('locationfound', onLocationFound);
 map.on('locationerror', onLocationError);
 
-map.locate({setView: true, maxZoom: 16});
 
 function sendToSide (e) {
     let name = e.target.feature.properties.NAME;
