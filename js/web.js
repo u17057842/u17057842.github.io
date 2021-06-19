@@ -123,8 +123,8 @@ function highlightFeature(e) {
 function onLocationFound(e) {
     var radius = e.accuracy / 2;
     let newIcon = L.icon({
-        iconUrl: 'arrow.png',
-        iconSize: [50,50]
+        iconUrl: 'location.png',
+        iconSize: [92,51]
     });
 
     L.marker(e.latlng, {icon: newIcon}).addTo(map)
