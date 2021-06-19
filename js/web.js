@@ -289,7 +289,14 @@ map.on('zoomend', function() {
     }
     console.log("Current Zoom Level =" + zoomlevel)
 });
+var baseLayers = {
+    "Mapbox dark": dark,
+    "Street map": streets,
+    "Satellite map": satellite
 
+};
+
+L.control.layers(baseLayers).addTo(map);
 
 /*function legendMaker (map) {
 
