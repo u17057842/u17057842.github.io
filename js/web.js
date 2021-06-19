@@ -136,6 +136,7 @@ function onLocationError(e) {
 map.on('locationfound', onLocationFound);
 map.on('locationerror', onLocationError);
 
+map.locate();
 
 function sendToSide (e) {
     let name = e.target.feature.properties.NAME;
