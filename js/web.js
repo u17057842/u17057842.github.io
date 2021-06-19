@@ -123,7 +123,7 @@ function highlightFeature(e) {
 function onLocationFound(e) {
     var radius = e.accuracy / 2;
     L.marker(e.latlng).addTo(map)
-        .bindPopup("You are within " + radius + " meters from this point").openPopup();
+        .bindPopup("Accuracy: " + radius + "m").openPopup();
     L.circle(e.latlng, radius).addTo(map);
 }
 
@@ -301,4 +301,12 @@ window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
+}
+
+var slider = document.getElementById("qualitySlider");
+var output = document.getElementById("qualitySliderValue");
+output.innerHTML = slider.value; 
+
+slider.oninput = function() {
+  output.innerHTML = this.value;
 }
