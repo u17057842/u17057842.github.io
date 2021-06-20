@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<title>Rivers</title>
+
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<link rel="shortcut icon" type="image/x-icon" href="icon.png" />
+    <link rel="stylesheet" href="css/style.css" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@3.3.0/dist/chart.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/w3.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	
+
+	<style>
+		html, body {
+			height: 100%;
+			margin: 0;
+			text-rendering: optimizeLegibility;
+  			-webkit-font-smoothing: antialiased;
+			overflow-y: hidden;
+			overflow-x: hidden;
+			
+		}
+	</style> 
+
+	<style>
+		#map { height: 100%; width: 85%; z-index: 1; position: relative; }
+		.info { width: 100% ; padding: 6px 8px; font: 14px/16px Arial, Helvetica, sans-serif; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; } .info h4 { margin: 0 0 5px; color: #777; }
+		.legend { width: 100px; text-align: left; line-height: 18px; color: #555; } 
+		.legend i { width: 18px; height: 18px; float: left; margin-right: 8px; opacity: 0.7; }
+		#mySidebar { 
+			position: relative; 
+			top: 0px; 
+			right: 0px; 
+			overflow-x: hidden;
+			width: 240px;
+			-webkit-transition: all .3s ease-in-out;
+			-moz-transition: all .3s ease-in-out;
+			-o-transition: all .3s ease-in-out;
+			-ms-transition: all .3s ease-in-out;
+			transition: all .3s ease-in-out;
+			z-index: 100;
+		}
+		</style>
+
+	
+</head>
+<body>
+
+	<div id='map'></div>
+	
+	<nav class="w3-sidebar w3-collapse w3-white w3-animate-right" style="z-index:2; width:15%; min-width: 10vh;" id="mySidebar"><br>
+		<a href="#" id="userSelect" class="w3-button w3-padding"><i class="fa fa-user-o fa-fw"></i>&nbsp; User</a>
+		<div id="closeSB">
+			<a href="#" class="w3-btn w3-red" id="close"><i class="fa fa-chevron-right fa-fw"></i>&nbsp;</a>
+		</div>
+
+
+		<div class="w3-bar-block">
+			<dl><dt>
+				<a href="#" id="eventM" class="w3-bar-item w3-button w3-text-white w3-dark-grey"><h4>&nbsp; Hover over river</h4></a>
+			</dt>
+			</dl>
+		  <a href="#" class="w3-bar-item w3-button w3-padding w3-blue" id="overview" ><i class="fa fa-chevron-up fa-fw"></i>&nbsp; Overview</a>
+		  <div id="overviewDetails">
+			<dl>
+				<dt>
+					<a href="#" class="w3-bar-item w3-button w3-padding w3-border-blue w3-border-left" ><i class="fa fa-info fa-fw" ></i>&nbsp; River Attributes:</a>
+				<dt>
+				<dt class="w3-light-grey w3-bar-item w3-margin-left w3-border-left w3-border-grey">
+					<p id="lengthRiv" class="">Length: ~</p>
+					<p id="distToMouth" class="">To Mouth: ~</p>
+					<p id="classRiv" class="">Class: ~</p>
+				</dt>
+
+			</dl>
+			<a href="#" id="myBtn"class="w3-bar-item  w3-button w3-padding w3-border-blue w3-border-left"><i class="fa fa-flask fa-fw"></i>&nbsp; Chemistry</a>
+			
+			<a href="#" class="w3-light-grey w3-button w3-bar-item w3-margin-left w3-border-left w3-border-grey" id="chemistryPH">Brief Summary</a>
+		
+			<a href="#" class="w3-bar-item w3-button w3-padding w3-border-blue w3-border-left"><i class="fa fa-users fa-fw"></i>&nbsp; Community</a>
+			<a href="#" class="w3-bar-item w3-button w3-padding w3-border-blue w3-border-left"><i class="fa  fa-trash-o fa-fw"></i>&nbsp; Pollution</a>
+		  </div>
+		  <div id="myModal" class="modal">
+
+			<!-- Modal content -->
+			<div class="modal-content">
+			  <span class="close">&times;</span>
+			  <h3>River Chemistry(2015 data)</h3>
+			  <p id="popo"></p>
+			</div>
+		  
+		  </div>
+
+		  <div class="w3-bar-item w3-padding w3-border-red w3-border-left">
+		  <a href="#" class="w3-button" style="padding-left: 0px;"><i class="fa fa-send fa-fw"></i> &nbsp;Submit your opinion</a>
+		  
+		  <div class="slidecontainer">
+			<p id="qualitySliderValue"></p>
+			<input type="range" min="1" max="100" value="50" class="slider" id="qualitySlider">
+			
+		  </div>
+		  	<p class="w3-small"><i class="fa fa-info fa-fw"></i>&nbsp; Give your opinion of the state of the river </br>&nbsp; &nbsp; &nbsp; Terrible (0) - Perfect (100)</p>
+			<a href="#" class="w3-bar-item w3-button w3-padding w3-light-grey" style="text-align: center;"><i class="fa fa-check fa-fw"></i>&nbsp;Submit</a>
+		  </div>
+
+
+		
+
+			
+
+
+
+		</div>
+	  </nav>
+	  
+
+<script src="data/pls.js" type="text/javascript"></script>
+//script src="js/leaflet-search.js">
+
+<script type="text/javascript" src="js/web.js"></script>
+
+<script type="text/javascript" src="js/papaparse.js"></script>
+
+
+
+
+
+</body>
+</html>

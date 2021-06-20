@@ -304,7 +304,7 @@ window.onclick = function(event) {
 }
 
 var slider = document.getElementById("qualitySlider");
-var output = document.getElementById("qualitySliderValue");
+var output = document.getElementById("qualitySliderValue"); 
 output.innerHTML = slider.value; 
 
 slider.oninput = function() {
