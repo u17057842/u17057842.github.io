@@ -20,12 +20,8 @@
 ## Table of contents
 
 - [Introduction](#introduction)
-- [Technical aspects](#how-it-works)
-- [Conservation rationale](#conservation)
 - [Bugs and feature requests](#bugs-and-feature-requests)
-- [How to help](#how-to-help)
 - [Creators](#creators)
-- [References](#references)
 - [Copyright and license](#copyright-and-license)
 
 
@@ -33,28 +29,13 @@
 
 The main project can be found by following the <a href="https://u17057842.github.io">link</a>.
 
-Detail how to use
+This is an incomplete README, please do not read much further. 
 
-- Instruction 1
-- Instruction 2
-- Instruction 3
-
-## Conservation of rivers
-
-Conservation facts
-
-## How the Website Works
-
-Technical jargon
 
 ## Bugs and feature requests
 
 If you have a problem(bug) or want to request a new feature, please first check the [issue guidelines](https://github.com/u17057842/u17057842.github.io/blob/master/CONTRIBUTING.md) to find previously submitted and corrected problems. If the feature or problem has not been previously mentioned, [please open a new issue](https://github.com/u17057842/u17057842.github.io/issues/new).
 
-## How to help
-
-- Services to offer
-- Community involvement
 
 ## Creators
 
@@ -62,9 +43,6 @@ If you have a problem(bug) or want to request a new feature, please first check 
 
 - <https://github.com/u17057842>
 
-## References
-
-Scientific refrerences.
 
 ## Copyright and license
 
