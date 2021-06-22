@@ -174,7 +174,12 @@ async function controller () {
             document.getElementById("chemistryPH").innerHTML = 
             `<p>pH: <b> ${chemData.data[i]['PH']? chemData.data[i]['PH']: "N/A"}</b></p>
             <p>Phosphates: <b> ${chemData.data[i]['PO4-P']? chemData.data[i]['PO4-P']: "N/A"}</b></p>
-            <p>Ammonium: <b> ${chemData.data[i]['NH4-N']? chemData.data[i]['NH4-N']: "N/A"}</b></p>`;
+            <p>Ammonium: <b> ${chemData.data[i]['NH4-N']? chemData.data[i]['NH4-N']: "N/A"}</b></p>
+            <p>Lead: <b> ${chemData.data[i]['PB']? chemData.data[i]['PB']: "N/A"}</b></p>`;
+
+            document.getElementById("pollution").innerHTML = 
+            `<p>Toxicity Level: <b>${chemData.data[i]['PB'] >= 0.01 ? "HIGH" : "N/A"}</b></p>`;
+
             break;
         }
         
